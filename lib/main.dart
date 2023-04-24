@@ -34,7 +34,7 @@ class CategoryScreen extends StatelessWidget {
     },
     {
       'name': 'Vegan',
-      'icon': Icons.safety_divider,
+      'icon': Icons.sprout,
     },
     {
       'name': 'Seafood',
