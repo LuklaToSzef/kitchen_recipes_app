@@ -94,7 +94,7 @@ class CategoryScreen extends StatelessWidget {
                     size: 48,
                     color: const Color.fromRGBO(72, 76, 180, 1.0)
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 15),
                   Text(
                     category['name'] as String,
                     style: Theme.of(context).textTheme.titleLarge,
