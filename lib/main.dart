@@ -118,7 +118,7 @@ class CategoryScreen extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {},
-              icon: const Icon(Icons.category),
+              icon: const Icon(Icons.receipt),
             ),
             IconButton(
               onPressed: () {},
