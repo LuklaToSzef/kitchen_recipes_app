@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:mdi_flutter/mdi_flutter.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -34,7 +34,7 @@ class CategoryScreen extends StatelessWidget {
     },
     {
       'name': 'Vegan',
-      'icon': Icons.sprout,
+      'icon': Icons.abc,
     },
     {
       'name': 'Seafood',
