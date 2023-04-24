@@ -19,6 +19,11 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class Constants{
+Color kPrimaryBlue= const Color.fromRGBO(144, 204, 252, 1.0);
+Color kSecondaryBlue= const Color.fromRGBO(72, 76, 180, 1.0);
+Color kBarsBlue= const Color.fromRGBO(0, 184, 255, 1.0);
+}
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({Key? key}) : super(key: key);
 
@@ -37,7 +42,7 @@ class CategoryScreen extends StatelessWidget {
     },
     {
       'name': 'Spicy',
-      'icon': Icons.face,
+      'icon': Icons.food_bank,
     },
     {
       'name': 'Healthy',
@@ -56,7 +61,6 @@ class CategoryScreen extends StatelessWidget {
       'icon': Icons.icecream,
     },
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +69,7 @@ class CategoryScreen extends StatelessWidget {
         title: const Text('Food Recipes'),
       ),
       body: GridView.builder(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(30),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 1,
@@ -82,7 +86,7 @@ class CategoryScreen extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: const Color.fromRGBO(144, 204, 252, 1.0),
+                color: Constants().kPrimaryBlue,
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -97,7 +101,7 @@ class CategoryScreen extends StatelessWidget {
                     category['name'] as String,
                     style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 35.0,
+                      fontSize: 25.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -112,15 +116,31 @@ class CategoryScreen extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            MaterialButton(
-              onPressed: () {},
-              child: const Text('Categories', style: TextStyle(fontSize: 20),),),
-            MaterialButton(
-              onPressed: () {},
-              child: const Text('Recipes', style: TextStyle(fontSize: 20),),),
-            MaterialButton(
-              onPressed: () {},
-              child: const Text('Saved', style: TextStyle(fontSize: 20),),),
+            Container(
+                width: 140,
+                height: 55,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: const Color.fromRGBO(0, 184, 255, 1.0),
+                ),
+                child: const Center(child: Text('Categories', style: TextStyle(fontSize: 25, color: Colors.white),))),
+            Container(
+                width: 120,
+                height: 55,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+
+                  color: Colors.white,
+                ),
+                child: const Center(child: Text('Recipes', style: TextStyle(fontSize: 25, color: Colors.black),))),
+            Container(
+                width: 120,
+                height: 55,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: Colors.white,
+                ),
+                child: const Center(child: Text('Saved', style: TextStyle(fontSize: 25, color: Colors.black),))),
           ],
         ),
       ),
