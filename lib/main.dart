@@ -29,31 +29,31 @@ class CategoryScreen extends StatelessWidget {
     },
     {
       'name': 'Vegan',
-      'icon': Icons.free_breakfast,
+      'icon': Icons.safety_divider,
     },
     {
       'name': 'Seafood',
-      'icon': Icons.fastfood,
+      'icon': Icons.safety_divider,
     },
     {
       'name': 'Spicy',
-      'icon': Icons.local_airport,
+      'icon': Icons.face,
     },
     {
       'name': 'Healthy',
-      'icon': Icons.local_dining,
+      'icon': Icons.apple,
     },
     {
       'name': 'Breakfast',
-      'icon': Icons.local_bar,
+      'icon': Icons.free_breakfast,
     },
     {
       'name': 'Dinner',
-      'icon': Icons.local_florist,
+      'icon': Icons.local_dining,
     },
     {
       'name': 'Desserts',
-      'icon': Icons.local_see,
+      'icon': Icons.icecream,
     },
   ];
 
@@ -61,7 +61,7 @@ class CategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Choose category'),
+        title: const Text('Food Recipes'),
       ),
       body: GridView.builder(
         padding: const EdgeInsets.all(16),
@@ -94,10 +94,14 @@ class CategoryScreen extends StatelessWidget {
                     size: 48,
                     color: const Color.fromRGBO(72, 76, 180, 1.0)
                   ),
-                  const SizedBox(height: 15),
+                  const SizedBox(height: 10),
                   Text(
                     category['name'] as String,
-                    style: Theme.of(context).textTheme.titleLarge,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
