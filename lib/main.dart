@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mdi_flutter/mdi_flutter.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -20,9 +19,9 @@ class MyApp extends StatelessWidget {
 }
 
 class Constants{
-Color kPrimaryBlue= const Color.fromRGBO(144, 204, 252, 1.0);
-Color kSecondaryBlue= const Color.fromRGBO(72, 76, 180, 1.0);
-Color kBarsBlue= const Color.fromRGBO(0, 184, 255, 1.0);
+  Color kPrimaryBlue= const Color.fromRGBO(144, 204, 252, 1.0);
+  Color kSecondaryBlue= const Color.fromRGBO(72, 76, 180, 1.0);
+  Color kBarsBlue= const Color.fromRGBO(0, 184, 255, 1.0);
 }
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({Key? key}) : super(key: key);
@@ -30,19 +29,19 @@ class CategoryScreen extends StatelessWidget {
   static const categories = [
     {
       'name': 'Fast Food',
-      'icon': Icons.local_pizza,
+      'icon': Icons.fastfood,
     },
     {
       'name': 'Vegan',
-      'icon': Icons.abc,
+      'icon': Icons.grass,
     },
     {
       'name': 'Seafood',
-      'icon': Icons.safety_divider,
+      'icon': Icons.set_meal,
     },
     {
       'name': 'Spicy',
-      'icon': Icons.food_bank,
+      'icon': Icons.local_fire_department,
     },
     {
       'name': 'Healthy',
