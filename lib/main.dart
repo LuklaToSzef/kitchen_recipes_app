@@ -61,6 +61,7 @@ class CategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text('Food Recipes'),
       ),
       body: GridView.builder(
@@ -79,14 +80,9 @@ class CategoryScreen extends StatelessWidget {
               // navigation here
             },
             child: Container(
-              width: 50,
-              height: 50,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: const Color.fromRGBO(144, 204, 252, 1.0),
-                //rgb(144, 204, 252)
-                boxShadow: const [
-                ],
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -94,7 +90,7 @@ class CategoryScreen extends StatelessWidget {
                   Icon(
                     category['icon'] as IconData?,
                     size: 60,
-                    color: const Color.fromRGBO(72, 76, 180, 1.0)
+                    color: const Color.fromRGBO(72, 76, 180, 1.0),
                   ),
                   const SizedBox(height: 10),
                   Text(
@@ -110,6 +106,26 @@ class CategoryScreen extends StatelessWidget {
             ),
           );
         },
+      ),
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.menu),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.category),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.bookmark),
+            ),
+          ],
+        ),
       ),
     );
   }
