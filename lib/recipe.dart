@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-
 import 'data/recipe_data.dart';
 
 class RecipeDetails extends StatelessWidget {
