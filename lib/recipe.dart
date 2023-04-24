@@ -27,11 +27,11 @@ class RecipeDetails extends StatelessWidget {
             const SizedBox(height: 8),
             Row(
               children: [
-                Icon(Icons.timer),
+                const Icon(Icons.timer),
                 const SizedBox(width: 8),
                 Text('${recipe.prepTime} min prep'),
                 const SizedBox(width: 16),
-                Icon(Icons.timer),
+                const Icon(Icons.timer),
                 const SizedBox(width: 8),
                 Text('${recipe.cookTime} min cook'),
               ],
