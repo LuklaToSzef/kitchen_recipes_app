@@ -69,8 +69,8 @@ class CategoryScreen extends StatelessWidget {
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 1,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
+          crossAxisSpacing: 30,
+          mainAxisSpacing: 30,
         ),
         itemCount: categories.length,
         itemBuilder: (BuildContext context, int index) {
@@ -81,7 +81,7 @@ class CategoryScreen extends StatelessWidget {
             },
             child: Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(15),
                 color: const Color.fromRGBO(144, 204, 252, 1.0),
               ),
               child: Column(
@@ -110,20 +110,17 @@ class CategoryScreen extends StatelessWidget {
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            IconButton(
+            MaterialButton(
               onPressed: () {},
-              icon: const Icon(Icons.menu),
-            ),
-            IconButton(
+              child: const Text('Categories', style: TextStyle(fontSize: 20),),),
+            MaterialButton(
               onPressed: () {},
-              icon: const Icon(Icons.receipt),
-            ),
-            IconButton(
+              child: const Text('Recipes', style: TextStyle(fontSize: 20),),),
+            MaterialButton(
               onPressed: () {},
-              icon: const Icon(Icons.bookmark),
-            ),
+              child: const Text('Saved', style: TextStyle(fontSize: 20),),),
           ],
         ),
       ),
