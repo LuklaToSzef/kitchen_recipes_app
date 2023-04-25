@@ -17,6 +17,9 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+/////////////////////////////SEARCH//////////////////////////////////
+
 final fieldText = TextEditingController();
 class SearchPage extends StatelessWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -28,6 +31,14 @@ class SearchPage extends StatelessWidget {
       return Scaffold(
         appBar: AppBar(
             automaticallyImplyLeading: false,
+            leading: IconButton(
+            onPressed: () =>
+                Navigator.of(context)
+                    .push(
+                    MaterialPageRoute(builder: (_) => const RecipesScreen())),
+            icon: const Icon(Icons.arrow_back),
+            iconSize: 35,
+            ),
             title: Container(
               width: double.infinity,
               height: 40,
@@ -45,7 +56,7 @@ class SearchPage extends StatelessWidget {
                         },
                       ),
                       hintText: 'Search...',
-),
+                    ),
                 ),
               ),
             )),
@@ -109,6 +120,9 @@ class SearchPage extends StatelessWidget {
     );
   }
 }
+
+////////////////////////////RECIPES//////////////////////////////////
+
 class RecipesScreen extends StatelessWidget {
   const RecipesScreen({Key? key}) : super(key: key);
 
