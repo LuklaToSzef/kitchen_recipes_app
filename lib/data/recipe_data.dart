@@ -5,6 +5,8 @@ class Recipe {
   final int cookTime;
   final List<String> ingredients;
   final List<String> instructions;
+  bool favorite;
+  List<String> categories;
 
   Recipe({
     required this.title,
@@ -13,6 +15,8 @@ class Recipe {
     required this.cookTime,
     required this.ingredients,
     required this.instructions,
+    this.favorite = false,
+    required this.categories,
   });
 
   String get image => imageUrl;
@@ -34,6 +38,8 @@ final List<Recipe> recipes = [
       'Add the egg mixture to the skillet and stir until the eggs are cooked and the pasta is coated.',
       'Serve immediately, garnished with additional parmesan cheese if desired.',
     ],
+    favorite: false,
+    categories: ['Pasta', 'Italian'],
   ),
   Recipe(
     title: 'Chicken Alfredo',
@@ -49,9 +55,10 @@ final List<Recipe> recipes = [
       'Add cooked fettuccine to the saucepan and toss until coated with the sauce.',
       'Serve immediately, topped with the cooked chicken and additional parmesan cheese if desired.',
     ],
+    favorite: true,
+    categories: ['Pasta', 'Italian'],
   ),
 ];
 
 // Select a recipe by title
 final Recipe selectedRecipe = recipes.where((recipe) => recipe.title == 'Spaghetti Carbonara').first;
-

@@ -1,27 +1,61 @@
-
 import 'package:flutter/material.dart';
 import 'data/recipe_data.dart';
 
-class RecipeDetails extends StatelessWidget {
+class RecipeDetails extends StatefulWidget {
   final Recipe recipe;
 
   const RecipeDetails({Key? key, required this.recipe}) : super(key: key);
 
   @override
+  _RecipeDetailsState createState() => _RecipeDetailsState();
+}
+
+class _RecipeDetailsState extends State<RecipeDetails> {
+  bool _isFavorite = false;
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(recipe.title),
+        title: Text(widget.recipe.title),
+        actions: [
+          IconButton(
+            icon: Icon(
+              _isFavorite ? Icons.star : Icons.star_border,
+              color: _isFavorite ? Colors.yellowAccent : Colors.white,
+            ),
+            onPressed: () {
+              setState(() {
+                _isFavorite = !_isFavorite;
+              });
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(recipe.image),
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => FullScreenImage(imageUrl: widget.recipe.imageUrl),
+                ));
+              },
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.asset(
+                  widget.recipe.image,
+                  height: 200,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
             const SizedBox(height: 16),
             Text(
-              recipe.title,
+              widget.recipe.title,
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 8),
@@ -29,11 +63,11 @@ class RecipeDetails extends StatelessWidget {
               children: [
                 const Icon(Icons.timer),
                 const SizedBox(width: 8),
-                Text('${recipe.prepTime} min prep'),
+                Text('${widget.recipe.prepTime} min prep'),
                 const SizedBox(width: 16),
                 const Icon(Icons.timer),
                 const SizedBox(width: 8),
-                Text('${recipe.cookTime} min cook'),
+                Text('${widget.recipe.cookTime} min cook'),
               ],
             ),
             const SizedBox(height: 16),
@@ -44,7 +78,7 @@ class RecipeDetails extends StatelessWidget {
             const SizedBox(height: 8),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: recipe.ingredients
+              children: widget.recipe.ingredients
                   .map((ingredient) => Text('- $ingredient'))
                   .toList(),
             ),
@@ -56,7 +90,7 @@ class RecipeDetails extends StatelessWidget {
             const SizedBox(height: 8),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: recipe.instructions
+              children: widget.recipe.instructions
                   .asMap()
                   .entries
                   .map((entry) => Column(
@@ -74,6 +108,34 @@ class RecipeDetails extends StatelessWidget {
                   .toList(),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class FullScreenImage extends StatelessWidget {
+  final String imageUrl;
+
+  const FullScreenImage({Key? key, required this.imageUrl}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: GestureDetector(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: Container(
+          color: Colors.black,
+          child: Center(
+            child: Image.asset(
+              imageUrl,
+              fit: BoxFit.cover,
+              height: double.infinity,
+              width: double.infinity,
+            ),
+          ),
         ),
       ),
     );
