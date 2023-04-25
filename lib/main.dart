@@ -141,7 +141,7 @@ class CategoryScreen extends StatelessWidget {
                 child: const Center(
                   child: Text(
                     'Categories',
-                    style: TextStyle(fontSize: 25, color: Colors.white),
+                    style: TextStyle(fontSize: 23, color: Colors.white),
                   ),
                 ),
               ),
@@ -163,7 +163,7 @@ class CategoryScreen extends StatelessWidget {
                 child: const Center(
                   child: Text(
                     'Recipes',
-                    style: TextStyle(fontSize: 25, color: Colors.black),
+                    style: TextStyle(fontSize: 23, color: Colors.black),
                   ),
                 ),
               ),
@@ -185,7 +185,7 @@ class CategoryScreen extends StatelessWidget {
                 child: const Center(
                   child: Text(
                     'Saved',
-                    style: TextStyle(fontSize: 25, color: Colors.black),
+                    style: TextStyle(fontSize: 23, color: Colors.black),
                   ),
                 ),
               ),
