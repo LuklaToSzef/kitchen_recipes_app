@@ -125,12 +125,6 @@ class CategoryScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const CategoryScreen()),
-                );
-              },
               child: Container(
                 width: 140,
                 height: 55,
