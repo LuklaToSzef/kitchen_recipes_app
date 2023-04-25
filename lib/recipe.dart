@@ -63,10 +63,6 @@ class _RecipeDetailsState extends State<RecipeDetails> {
               ),
             ),
             const SizedBox(height: 16),
-            Text(
-              widget.recipe.title,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
             const SizedBox(height: 8),
             Row(
               children: [
