@@ -128,7 +128,7 @@ class CategoryScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CategoryScreen()),
+                  MaterialPageRoute(builder: (context) => const CategoryScreen()),
                 );
               },
               child: Container(
@@ -150,7 +150,7 @@ class CategoryScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => RecipesScreen()),
+                  MaterialPageRoute(builder: (context) => const RecipesScreen()),
                 );
               },
               child: Container(
