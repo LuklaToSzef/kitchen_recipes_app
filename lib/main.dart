@@ -124,31 +124,72 @@ class CategoryScreen extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Container(
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CategoryScreen()),
+                );
+              },
+              child: Container(
                 width: 140,
                 height: 55,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   color: const Color.fromRGBO(0, 184, 255, 1.0),
                 ),
-                child: const Center(child: Text('Categories', style: TextStyle(fontSize: 25, color: Colors.white),))),
-            Container(
+                child: const Center(
+                  child: Text(
+                    'Categories',
+                    style: TextStyle(fontSize: 25, color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RecipesScreen()),
+                );
+              },
+              child: Container(
                 width: 120,
                 height: 55,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
-
                   color: Colors.white,
                 ),
-                child: const Center(child: Text('Recipes', style: TextStyle(fontSize: 25, color: Colors.black),))),
-            Container(
+                child: const Center(
+                  child: Text(
+                    'Recipes',
+                    style: TextStyle(fontSize: 25, color: Colors.black),
+                  ),
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RecipeDetails(recipe: recipes.first)),
+                );
+              },
+              child: Container(
                 width: 120,
                 height: 55,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   color: Colors.white,
                 ),
-                child: const Center(child: Text('Saved', style: TextStyle(fontSize: 25, color: Colors.black),))),
+                child: const Center(
+                  child: Text(
+                    'Saved',
+                    style: TextStyle(fontSize: 25, color: Colors.black),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
