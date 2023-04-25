@@ -164,7 +164,6 @@ class RecipesScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const CategoryScreen()),
-
                 );
               },
               child: Container(
@@ -183,8 +182,6 @@ class RecipesScreen extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              onTap: () {
-              },
               child: Container(
                 width: 140,
                 height: 55,
