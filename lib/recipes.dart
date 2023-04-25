@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
+import 'data/recipe_data.dart';
+import 'recipe.dart';
 import 'main.dart';
-void main() {
-  runApp(const MyApp());
-}
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class CategoriesScreen extends StatefulWidget {
+  final String selectedCategory;
+
+  CategoriesScreen({required this.selectedCategory});
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Recipes',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const RecipesScreen(),
-    );
-  }
+  _CategoriesScreenState createState() => _CategoriesScreenState();
 }
 
 /////////////////////////////SEARCH//////////////////////////////////
@@ -27,39 +21,39 @@ class SearchPage extends StatelessWidget {
     fieldText.clear();
   }
   @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(
-            automaticallyImplyLeading: false,
-            leading: IconButton(
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+          automaticallyImplyLeading: false,
+          leading: IconButton(
             onPressed: () =>
                 Navigator.of(context)
                     .push(
-                    MaterialPageRoute(builder: (_) => const RecipesScreen())),
+                    MaterialPageRoute(builder: (_) =>  CategoriesScreen(selectedCategory: '',))),
             icon: const Icon(Icons.arrow_back),
             iconSize: 35,
-            ),
-            title: Container(
-              width: double.infinity,
-              height: 40,
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(5)),
-              child: Center(
-                child: TextField(
-                  controller: fieldText,
-                  decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.search),
-                      suffixIcon: IconButton(
-                        icon: const Icon(Icons.clear),
-                        onPressed: (){
-                          clearText();
-                        },
-                      ),
-                      hintText: 'Search...',
-                    ),
+          ),
+          title: Container(
+            width: double.infinity,
+            height: 40,
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(5)),
+            child: Center(
+              child: TextField(
+                controller: fieldText,
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.search),
+                  suffixIcon: IconButton(
+                    icon: const Icon(Icons.clear),
+                    onPressed: (){
+                      clearText();
+                    },
+                  ),
+                  hintText: 'Search...',
                 ),
               ),
-            )),
+            ),
+          )),
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         child: Row(
@@ -69,7 +63,7 @@ class SearchPage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CategoryScreen()),
+                  MaterialPageRoute(builder: (context) => const CategoryScreen()),
                 );
               },
               child: Container(
@@ -121,17 +115,28 @@ class SearchPage extends StatelessWidget {
   }
 }
 
-////////////////////////////RECIPES//////////////////////////////////
+/////////////////////////////RECIPES//////////////////////////////////
 
-class RecipesScreen extends StatelessWidget {
-  const RecipesScreen({Key? key}) : super(key: key);
+class _CategoriesScreenState extends State<CategoriesScreen> {
+  List<Recipe> filteredRecipes = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    // filter recipes by selected category
+    filteredRecipes = recipes
+        .where((recipe) => recipe.categories.contains(widget.selectedCategory))
+        .toList();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          centerTitle: true,
-          title: const Text("Category"),
+        centerTitle: true,
+        automaticallyImplyLeading: false, // remove back arrow
+        title: Text(widget.selectedCategory),
           leading: IconButton(
             onPressed: () =>
                 Navigator.of(context)
@@ -141,18 +146,63 @@ class RecipesScreen extends StatelessWidget {
             iconSize: 40,
           )
       ),
-      body: Center(
-        child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-            Container(
-            height: 100,
-            width: 100,
-          child: TextField(
-          )
-        )
-        ],
-        )
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          children: filteredRecipes.map((recipe) {
+            return Container(
+              margin: EdgeInsets.only(bottom: 16.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50.0),
+                border: Border.all(
+                    color: Constants().kPrimaryBlue,
+                    width: 3,
+                ),
+              ),
+              child: InkWell(
+                onTap: () {
+                  // navigate to recipe detail screen
+                },
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.vertical(top: Radius.circular(50.0)),
+                              image: DecorationImage(
+                                image: NetworkImage(recipe.imageUrl),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            height: 300,
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(16.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  recipe.title,
+                                  style: TextStyle(fontSize: 20.0),
+                                ),
+                                SizedBox(height: 8.0),
+                                Text('${recipe.prepTime + recipe.cookTime} minutes'),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }).toList(),
+        ),
       ),
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
@@ -212,6 +262,4 @@ class RecipesScreen extends StatelessWidget {
     );
   }
 }
-
-
 

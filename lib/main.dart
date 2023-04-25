@@ -145,7 +145,7 @@ class CategoryScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const RecipesScreen()),
+                  MaterialPageRoute(builder: (context) => CategoriesScreen(selectedCategory: 'Pasta',)),
                 );
               },
               child: Container(
