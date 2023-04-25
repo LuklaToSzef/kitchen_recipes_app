@@ -14,6 +14,13 @@ class _RecipeDetailsState extends State<RecipeDetails> {
   bool _isFavorite = false;
 
   @override
+  void initState() {
+    super.initState();
+    // Set the favorite state based on the recipe's favorite field
+    _isFavorite = widget.recipe.favorite;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -22,11 +29,13 @@ class _RecipeDetailsState extends State<RecipeDetails> {
           IconButton(
             icon: Icon(
               _isFavorite ? Icons.star : Icons.star_border,
-              color: _isFavorite ? Colors.yellowAccent : Colors.white,
+              color: _isFavorite ? const Color.fromRGBO(72, 76, 180, 1.0) : Colors.white,
             ),
             onPressed: () {
               setState(() {
                 _isFavorite = !_isFavorite;
+                // Update the favorite field of the recipe
+                widget.recipe.favorite = _isFavorite;
               });
             },
           ),
@@ -45,7 +54,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
               },
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
-                child: Image.asset(
+                child: Image.network(
                   widget.recipe.image,
                   height: 200,
                   width: double.infinity,
@@ -129,7 +138,7 @@ class FullScreenImage extends StatelessWidget {
         child: Container(
           color: Colors.black,
           child: Center(
-            child: Image.asset(
+            child: Image.network(
               imageUrl,
               fit: BoxFit.cover,
               height: double.infinity,

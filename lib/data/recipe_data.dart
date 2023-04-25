@@ -26,7 +26,7 @@ class Recipe {
 final List<Recipe> recipes = [
   Recipe(
     title: 'Spaghetti Carbonara',
-    imageUrl: 'https://www.example.com/spaghetti_carbonara.jpg',
+    imageUrl: 'https://www.cookingclassy.com/wp-content/uploads/2020/10/spaghetti-carbonara-01.jpg',
     prepTime: 10,
     cookTime: 20,
     ingredients: ['spaghetti', 'eggs', 'bacon', 'parmesan cheese'],
@@ -55,10 +55,10 @@ final List<Recipe> recipes = [
       'Add cooked fettuccine to the saucepan and toss until coated with the sauce.',
       'Serve immediately, topped with the cooked chicken and additional parmesan cheese if desired.',
     ],
-    favorite: true,
+    favorite: false,
     categories: ['Pasta', 'Italian'],
   ),
 ];
 
 // Select a recipe by title
-final Recipe selectedRecipe = recipes.where((recipe) => recipe.title == 'Spaghetti Carbonara').first;
+//final Recipe selectedRecipe = recipes.where((recipe) => recipe.title == 'Spaghetti Carbonara').first;
