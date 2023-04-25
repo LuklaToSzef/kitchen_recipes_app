@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kitchen_recipes_app/data/recipe_data.dart';
+import 'recipe.dart';
+import 'recipes.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -40,7 +43,7 @@ class CategoryScreen extends StatelessWidget {
       'icon': Icons.set_meal,
     },
     {
-      'name': 'Spicy',
+      'name': 'Recipe',
       'icon': Icons.local_fire_department,
     },
     {
@@ -80,6 +83,12 @@ class CategoryScreen extends StatelessWidget {
           final category = categories[index];
           return GestureDetector(
             onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => RecipeDetails(recipe: recipes.last),
+                ),
+              );
               // navigation here
             },
             child: Container(
@@ -115,31 +124,72 @@ class CategoryScreen extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Container(
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CategoryScreen()),
+                );
+              },
+              child: Container(
                 width: 140,
                 height: 55,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   color: const Color.fromRGBO(0, 184, 255, 1.0),
                 ),
-                child: const Center(child: Text('Categories', style: TextStyle(fontSize: 25, color: Colors.white),))),
-            Container(
+                child: const Center(
+                  child: Text(
+                    'Categories',
+                    style: TextStyle(fontSize: 25, color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RecipesScreen()),
+                );
+              },
+              child: Container(
                 width: 120,
                 height: 55,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
-
                   color: Colors.white,
                 ),
-                child: const Center(child: Text('Recipes', style: TextStyle(fontSize: 25, color: Colors.black),))),
-            Container(
+                child: const Center(
+                  child: Text(
+                    'Recipes',
+                    style: TextStyle(fontSize: 25, color: Colors.black),
+                  ),
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RecipeDetails(recipe: recipes.first)),
+                );
+              },
+              child: Container(
                 width: 120,
                 height: 55,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   color: Colors.white,
                 ),
-                child: const Center(child: Text('Saved', style: TextStyle(fontSize: 25, color: Colors.black),))),
+                child: const Center(
+                  child: Text(
+                    'Saved',
+                    style: TextStyle(fontSize: 25, color: Colors.black),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
