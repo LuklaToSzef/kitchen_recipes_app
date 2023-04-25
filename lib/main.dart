@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kitchen_recipes_app/data/recipe_data.dart';
+import 'recipe.dart';
+import 'recipes.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -40,7 +43,7 @@ class CategoryScreen extends StatelessWidget {
       'icon': Icons.set_meal,
     },
     {
-      'name': 'Spicy',
+      'name': 'Recipe',
       'icon': Icons.local_fire_department,
     },
     {
@@ -80,6 +83,12 @@ class CategoryScreen extends StatelessWidget {
           final category = categories[index];
           return GestureDetector(
             onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => RecipeDetails(recipe: recipes.last),
+                ),
+              );
               // navigation here
             },
             child: Container(
