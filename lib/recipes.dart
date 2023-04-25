@@ -24,30 +24,31 @@ class SearchPage extends StatelessWidget {
     fieldText.clear();
   }
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          title: Container(
-            width: double.infinity,
-            height: 40,
-            decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(5)),
-            child: Center(
-              child: TextField(
-                controller: fieldText,
-                decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.search),
-                    suffixIcon: IconButton(
-                      icon: const Icon(Icons.clear),
-                      onPressed: (){
-                        clearText();
-                      },
-                    ),
-                    hintText: 'Search...',
-                    border: InputBorder.none),
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(
+            automaticallyImplyLeading: false,
+            title: Container(
+              width: double.infinity,
+              height: 40,
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(5)),
+              child: Center(
+                child: TextField(
+                  controller: fieldText,
+                  decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.search),
+                      suffixIcon: IconButton(
+                        icon: const Icon(Icons.clear),
+                        onPressed: (){
+                          clearText();
+                        },
+                      ),
+                      hintText: 'Search...',
+),
+                ),
               ),
-            ),
-          )),
+            )),
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         child: Row(
@@ -77,10 +78,6 @@ class SearchPage extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => RecipesScreen()),
-                );
               },
               child: Container(
                 width: 140,
@@ -137,6 +134,8 @@ class RecipesScreen extends StatelessWidget {
             Container(
             height: 100,
             width: 100,
+          child: TextField(
+          )
         )
         ],
         )
@@ -150,7 +149,7 @@ class RecipesScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CategoryScreen()),
+                  MaterialPageRoute(builder: (context) => const CategoryScreen()),
 
                 );
               },
@@ -171,10 +170,6 @@ class RecipesScreen extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => RecipesScreen()),
-                );
               },
               child: Container(
                 width: 140,

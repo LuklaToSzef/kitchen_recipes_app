@@ -69,6 +69,7 @@ class CategoryScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: const Text('Food Recipes'),
+        automaticallyImplyLeading: false,
       ),
       body: GridView.builder(
         padding: const EdgeInsets.all(30),
@@ -125,6 +126,12 @@ class CategoryScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CategoryScreen()),
+                );
+              },
               child: Container(
                 width: 140,
                 height: 55,
