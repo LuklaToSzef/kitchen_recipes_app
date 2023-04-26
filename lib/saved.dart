@@ -271,7 +271,7 @@ class _SavedScreenState extends State<SavedScreen>{
                 ),
                 child: const Center(
                   child: Text(
-                    'Categories',
+                    'Recipes',
                     style: TextStyle(fontSize: 23, color: Colors.black),
                   ),
                 ),
