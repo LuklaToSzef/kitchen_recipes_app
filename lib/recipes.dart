@@ -6,7 +6,7 @@ import 'main.dart';
 class CategoriesScreen extends StatefulWidget {
   final String selectedCategory;
 
-  CategoriesScreen({required this.selectedCategory});
+  const CategoriesScreen({required this.selectedCategory});
 
   @override
   _CategoriesScreenState createState() => _CategoriesScreenState();
@@ -29,7 +29,7 @@ class SearchPage extends StatelessWidget {
             onPressed: () =>
                 Navigator.of(context)
                     .push(
-                    MaterialPageRoute(builder: (_) =>  CategoriesScreen(selectedCategory: '',))),
+                    MaterialPageRoute(builder: (_) =>  const CategoriesScreen(selectedCategory: '',))),
             icon: const Icon(Icons.arrow_back),
             iconSize: 35,
           ),
@@ -123,7 +123,6 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   @override
   void initState() {
     super.initState();
-
     // filter recipes by selected category
     filteredRecipes = recipes
         .where((recipe) => recipe.categories.contains(widget.selectedCategory))
@@ -135,7 +134,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        automaticallyImplyLeading: false, // remove back arrow
+        automaticallyImplyLeading: false,
         title: Text(widget.selectedCategory),
           leading: IconButton(
             onPressed: () =>
@@ -146,12 +145,12 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             iconSize: 40,
           )
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(15.0),
         child: Column(
           children: filteredRecipes.map((recipe) {
             return Container(
-              margin: EdgeInsets.only(bottom: 16.0),
+              margin: const EdgeInsets.only(bottom: 15.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50.0),
                 border: Border.all(
@@ -163,37 +162,54 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 onTap: () {
                   // navigate to recipe detail screen
                 },
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: Stack (
                   children: [
-                    Expanded(
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.vertical(top: Radius.circular(50.0)),
+                        image: DecorationImage(
+                          image: NetworkImage(recipe.imageUrl),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      height: 280,
+                    ),
+                    Positioned(
+                      top: 12,
+                      right: 12,
+                      child: IconButton(
+                        icon: Icon(Icons.star),
+                        color: Colors.white,
+                        iconSize: 35,
+                        onPressed: () {
+                          // add recipe to favorites
+                        },
+                      ),
+                    ),
+                    Positioned(
+                      top: 10,
+                      right: 10,
+                      child: IconButton(
+                        icon: Icon(Icons.star_border),
+                        color: Constants().kSecondaryBlue,
+                        iconSize: 40,
+                        onPressed: () {
+                          // add recipe to favorites
+                        },
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(15.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.vertical(top: Radius.circular(50.0)),
-                              image: DecorationImage(
-                                image: NetworkImage(recipe.imageUrl),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            height: 300,
+                          const SizedBox(height: 280),
+                          Text(
+                            recipe.title,
+                            style: const TextStyle(fontSize: 20.0),
                           ),
-                          Container(
-                            padding: EdgeInsets.all(16.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  recipe.title,
-                                  style: TextStyle(fontSize: 20.0),
-                                ),
-                                SizedBox(height: 8.0),
-                                Text('${recipe.prepTime + recipe.cookTime} minutes'),
-                              ],
-                            ),
-                          ),
+                          const SizedBox(height: 8.0),
+                          Text('${recipe.prepTime + recipe.cookTime} minutes'),
                         ],
                       ),
                     ),
