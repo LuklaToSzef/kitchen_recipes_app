@@ -64,7 +64,7 @@ class Recipe {
   ),
    Recipe(
      title: 'Fish Tacos',
-     imageUrl: '',
+     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSmIaKs7ru-2uLY3FXoltYK7U8VN3IEt1Drw&usqp=CAU',
      prepTime: 10,
      cookTime: 15,
      ingredients: ['tilapia fillets', 'flour tortillas', 'cabbage', 'salsa'],
@@ -135,7 +135,7 @@ class Recipe {
    ),
    Recipe(
      title: 'Grilled Shrimp Skewers',
-     imageUrl: '',
+     imageUrl: 'https://www.wholesomeyum.com/wp-content/uploads/2021/07/wholesomeyum-Grilled-Shrimp-Skewers-Recipe-13.jpg',
      prepTime: 10,
      cookTime: 8,
      ingredients: ['shrimp', 'lemon', 'garlic', 'olive oil', 'salt'],
