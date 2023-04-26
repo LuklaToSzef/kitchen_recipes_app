@@ -16,9 +16,9 @@ class _RecipeDetailsState extends State<RecipeDetails> {
   @override
   void initState() {
     super.initState();
-    // Set the favorite state based on the recipe's favorite field
     _isFavorite = widget.recipe.favorite;
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +36,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                 _isFavorite = !_isFavorite;
                 // Update the favorite field of the recipe
                 widget.recipe.favorite = _isFavorite;
+
               });
             },
           ),

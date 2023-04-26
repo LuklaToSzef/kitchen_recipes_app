@@ -7,6 +7,7 @@ class Recipe {
   final List<String> instructions;
   bool favorite;
   List<String> categories;
+  final int difficulty;
 
   Recipe({
     required this.title,
@@ -17,13 +18,14 @@ class Recipe {
     required this.instructions,
     this.favorite = false,
     required this.categories,
+    required this.difficulty,
   });
 
   String get image => imageUrl;
 }
 
 // List of recipes
-final List<Recipe> recipes = [
+ List<Recipe> recipes = [
   Recipe(
     title: 'Spaghetti Carbonara',
     imageUrl: 'https://www.cookingclassy.com/wp-content/uploads/2020/10/spaghetti-carbonara-01.jpg',
@@ -40,6 +42,7 @@ final List<Recipe> recipes = [
     ],
     favorite: false,
     categories: ['Pasta', 'Italian'],
+    difficulty: 2,
   ),
   Recipe(
     title: 'Chicken Alfredo',
@@ -57,8 +60,6 @@ final List<Recipe> recipes = [
     ],
     favorite: false,
     categories: ['Pasta', 'Italian'],
+    difficulty: 3,
   ),
 ];
-
-// Select a recipe by title
-//final Recipe selectedRecipe = recipes.where((recipe) => recipe.title == 'Spaghetti Carbonara').first;
