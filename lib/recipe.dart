@@ -35,6 +35,9 @@ class _RecipeDetailsState extends State<RecipeDetails> {
             onPressed: () {
               setState(() {
                 _isFavorite = !_isFavorite;
+                // Update the favorite field of the recipe
+                widget.recipe.favorite = _isFavorite;
+
               });
             },
           ),
@@ -52,23 +55,14 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                 ));
               },
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(50),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50.0),
-                    border: Border.all(
-                      color: const Color.fromRGBO(72, 76, 180, 1.0),
-                      width: 3,
-                    ),
-
-                    image: DecorationImage(
-                      image: NetworkImage(widget.recipe.imageUrl),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  height: 280,
+                borderRadius: BorderRadius.circular(16),
+                child: Image.network(
+                  widget.recipe.image,
+                  height: 200,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
                 ),
-            ),
+              ),
             ),
             const SizedBox(height: 16),
             const SizedBox(height: 8),

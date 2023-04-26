@@ -157,7 +157,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>{
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50.0),
                 border: Border.all(
-                    color: Constants().kPrimaryBlue,
+                    color: Constants().kSecondaryBlue,
                     width: 3,
                 ),
               ),
