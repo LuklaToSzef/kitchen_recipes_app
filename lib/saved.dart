@@ -169,7 +169,7 @@ class _SavedScreenState extends State<SavedScreen>{
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.vertical(top: Radius.circular(50.0)),
+                        borderRadius: const BorderRadius.vertical(top: Radius.circular(45.0)),
                         image: DecorationImage(
                           image: NetworkImage(recipe.imageUrl),
                           fit: BoxFit.cover,
