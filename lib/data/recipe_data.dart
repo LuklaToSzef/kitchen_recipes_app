@@ -248,7 +248,7 @@ class Recipe {
 
    Recipe(
      title: 'Tomato Soup',
-     imageUrl: 'https://www.example.com/tomato_soup.jpg',
+     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8q3UZJpFLGEZuv2_8d3oiUayl-z32CwWIxg&usqp=CAU',
      prepTime: 10,
      cookTime: 25,
      ingredients: ['tomatoes', 'onion', 'garlic', 'chicken broth', 'heavy cream'],
