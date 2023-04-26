@@ -81,7 +81,7 @@ class Recipe {
    ),
    Recipe(
      title: 'Quinoa Salad',
-     imageUrl: '',
+     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkIMxUKmq_XRK9xSLMQTNM5T6zutoIfVM-0g&usqp=CAU',
      prepTime: 10,
      cookTime: 20,
      ingredients: ['quinoa', 'cherry tomatoes', 'cucumber', 'red onion', 'feta cheese'],
@@ -97,7 +97,7 @@ class Recipe {
    ),
    Recipe(
      title: 'Blueberry Pancakes',
-     imageUrl: '',
+     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjv8XImXmE29lH5Vur722-Uui4zIC-MDE8cg&usqp=CAU',
      prepTime: 10,
      cookTime: 10,
      ingredients: ['flour', 'baking powder', 'sugar', 'salt', 'eggs', 'milk', 'blueberries'],
@@ -117,7 +117,7 @@ class Recipe {
    ),
    Recipe(
      title: 'Vegan Buddha Bowl',
-     imageUrl: '',
+     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsyOj8l0ibllC3qAM4UBdSS2gt59ilSEIa0g&usqp=CAU',
      prepTime: 15,
      cookTime: 30,
      ingredients: ['quinoa', 'chickpeas', 'sweet potato', 'avocado', 'spinach'],
@@ -153,7 +153,7 @@ class Recipe {
    ),
    Recipe(
      title: 'Banana Pancakes',
-     imageUrl: '',
+     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYwDQ6SPH7nTvKSU11NPWT2BKWDToOLIcPjQ&usqp=CAU',
      prepTime: 10,
      cookTime: 10,
      ingredients: ['flour', 'baking powder', 'salt', 'milk', 'banana', 'egg', 'butter'],
@@ -171,7 +171,7 @@ class Recipe {
    ),
    Recipe(
      title: 'Classic Cheeseburger',
-     imageUrl: '',
+     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnLEJWFMbNZnNNJHXDrm0P0f16rinrjNrbGQ&usqp=CAU',
      prepTime: 10,
      cookTime: 10,
      ingredients: ['ground beef', 'cheddar cheese', 'lettuce', 'tomato', 'onion', 'buns'],
@@ -190,7 +190,7 @@ class Recipe {
 
    Recipe(
      title: 'Mediterranean Chickpea Salad',
-     imageUrl: '',
+     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaA_bR0MzFwTqmedtPMtOvcrVRUXFdXkgc8w&usqp=CAU',
      prepTime: 15,
      cookTime: 0,
      ingredients: ['chickpeas', 'cucumber', 'tomato', 'red onion', 'feta cheese', 'olives', 'lemon juice', 'olive oil', 'garlic', 'salt', 'pepper'],
@@ -210,7 +210,7 @@ class Recipe {
 
    Recipe(
      title: 'Shrimp Scampi',
-     imageUrl: '',
+     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKxeadpN8pNWvNX67UaF5GxXnoKIkSP5qDxw&usqp=CAU',
      prepTime: 10,
      cookTime: 10,
      ingredients: ['spaghetti', 'shrimp', 'butter', 'olive oil', 'garlic', 'white wine', 'lemon juice', 'parsley', 'salt', 'pepper'],
