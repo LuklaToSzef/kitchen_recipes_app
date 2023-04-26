@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:kitchen_recipes_app/saved.dart';
+import 'package:kitchen_recipes_app/recipes.dart';
 import 'data/recipe_data.dart';
 import 'recipe.dart';
 import 'main.dart';
 
-class CategoriesScreen extends StatefulWidget {
+class SavedScreen extends StatefulWidget {
   final String selectedCategory;
 
-  const CategoriesScreen({required this.selectedCategory});
+  const SavedScreen({required this.selectedCategory});
 
   @override
-  _CategoriesScreenState createState() => _CategoriesScreenState();
+  _SavedScreenState createState() => _SavedScreenState();
 }
 
 /////////////////////////////SEARCH//////////////////////////////////
@@ -30,7 +30,7 @@ class SearchPage extends StatelessWidget {
             onPressed: () =>
                 Navigator.of(context)
                     .push(
-                    MaterialPageRoute(builder: (_) =>  const CategoriesScreen(selectedCategory: 'All'))),
+                    MaterialPageRoute(builder: (_) =>  const SavedScreen(selectedCategory: 'All'))),
             icon: const Icon(Icons.arrow_back),
             iconSize: 35,
           ),
@@ -118,7 +118,7 @@ class SearchPage extends StatelessWidget {
 
 /////////////////////////////RECIPES//////////////////////////////////
 
-class _CategoriesScreenState extends State<CategoriesScreen>{
+class _SavedScreenState extends State<SavedScreen>{
   bool _isFavorite = false;
   List<Recipe> filteredRecipes = [];
 
@@ -136,9 +136,9 @@ class _CategoriesScreenState extends State<CategoriesScreen>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        automaticallyImplyLeading: false,
-        title: Text(widget.selectedCategory),
+          centerTitle: true,
+          automaticallyImplyLeading: false,
+          title: Text(widget.selectedCategory),
           leading: IconButton(
             onPressed: () =>
                 Navigator.of(context)
@@ -157,8 +157,8 @@ class _CategoriesScreenState extends State<CategoriesScreen>{
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50.0),
                 border: Border.all(
-                    color: Constants().kPrimaryBlue,
-                    width: 3,
+                  color: Constants().kPrimaryBlue,
+                  width: 3,
                 ),
               ),
               child: InkWell(
@@ -181,12 +181,12 @@ class _CategoriesScreenState extends State<CategoriesScreen>{
                       top: 12,
                       right: 12,
                       child: IconButton(
-                      icon: Icon(Icons.star),
-                      color: Colors.white,
-                      iconSize: 35,
-                      onPressed: () {
-                      // add recipe to favorites
-                      },
+                        icon: Icon(Icons.star),
+                        color: Colors.white,
+                        iconSize: 35,
+                        onPressed: () {
+                          // add recipe to favorites
+                        },
                       ),
                     ),
                     Positioned(
@@ -256,7 +256,28 @@ class _CategoriesScreenState extends State<CategoriesScreen>{
               ),
             ),
             GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CategoriesScreen(selectedCategory: 'All')),
+                );
+              },
               child: Container(
+                width: 120,
+                height: 55,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: Colors.white,
+                ),
+                child: const Center(
+                  child: Text(
+                    'Categories',
+                    style: TextStyle(fontSize: 23, color: Colors.black),
+                  ),
+                ),
+              ),
+            ),
+             Container(
                 width: 140,
                 height: 55,
                 decoration: BoxDecoration(
@@ -265,29 +286,11 @@ class _CategoriesScreenState extends State<CategoriesScreen>{
                 ),
                 child: const Center(
                   child: Text(
-                    'Recipes',
+                    'Saved',
                     style: TextStyle(fontSize: 23, color: Colors.white),
-                  ),
-                ),
               ),
             ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const SavedScreen(selectedCategory: 'All')),
-                );
-              },
-            child: Container(
-                width: 120,
-                height: 55,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: Colors.white,
-                ),
-                child: const Center(child: Text('Saved',
-                  style: TextStyle(fontSize: 23, color: Colors.black),))),
-            ),
+          ),
           ],
         ),
       ),

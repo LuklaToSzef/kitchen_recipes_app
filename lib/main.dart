@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kitchen_recipes_app/data/recipe_data.dart';
+import 'package:kitchen_recipes_app/saved.dart';
 import 'recipe.dart';
 import 'recipes.dart';
 void main() {
@@ -167,7 +168,7 @@ class CategoryScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => RecipeDetails(recipe: recipes.first)),
+                  MaterialPageRoute(builder: (context) => SavedScreen(selectedCategory: 'All')),
                 );
               },
               child: Container(
