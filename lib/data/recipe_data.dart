@@ -230,5 +230,38 @@ class Recipe {
      categories: ['Seafood', 'Dinner', 'All'],
      difficulty: 2,
    ),
+   Recipe(
+     title: 'Chicken Fajitas',
+     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJrrTrIsQFoUf9CjLoQ2vlBiBn96F0-KMQ5A&usqp=CAU',
+     prepTime: 15,
+     cookTime: 15,
+     ingredients: ['chicken', 'bell peppers', 'onion', 'tortillas', 'sour cream'],
+     instructions: [
+       'Season chicken with fajita seasoning and cook in a skillet until browned and cooked through.',
+       'Add sliced bell peppers and onion to the skillet and cook until tender.',
+       'Serve the chicken and vegetables in warm tortillas with a dollop of sour cream.',
+     ],
+     favorite: false,
+     categories: ['All', 'Fast Food'],
+     difficulty: 2,
+   ),
+
+   Recipe(
+     title: 'Tomato Soup',
+     imageUrl: 'https://www.example.com/tomato_soup.jpg',
+     prepTime: 10,
+     cookTime: 25,
+     ingredients: ['tomatoes', 'onion', 'garlic', 'chicken broth', 'heavy cream'],
+     instructions: [
+       'Cook onion and garlic in a large saucepan until tender.',
+       'Add tomatoes and chicken broth to the saucepan and bring to a simmer.',
+       'Simmer for 15-20 minutes, then puree with an immersion blender.',
+       'Stir in heavy cream and season with salt and pepper to taste.',
+       'Serve hot, garnished with fresh herbs if desired.',
+     ],
+     favorite: false,
+     categories: ['All', 'Healthy'],
+     difficulty: 1,
+   ),
 
  ];
