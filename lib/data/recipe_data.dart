@@ -41,7 +41,7 @@ class Recipe {
       'Serve immediately, garnished with additional parmesan cheese if desired.',
     ],
     favorite: false,
-    categories: ['Pasta', 'Italian', 'All'],
+    categories: ['Dinner', 'All'],
     difficulty: 2,
   ),
   Recipe(
@@ -59,7 +59,7 @@ class Recipe {
       'Serve immediately, topped with the cooked chicken and additional parmesan cheese if desired.',
     ],
     favorite: false,
-    categories: ['Pasta', 'Italian', 'All'],
+    categories: ['Dinner', 'All'],
     difficulty: 3,
   ),
    Recipe(
