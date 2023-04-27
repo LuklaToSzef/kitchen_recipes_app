@@ -18,7 +18,6 @@ class _RecipeDetailsState extends State<RecipeDetails> {
   void initState() {
     super.initState();
     _isFavorite = widget.recipe.favorite;
-    widget.recipe.favorite = _isFavorite;
   }
 
 
@@ -36,6 +35,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
             onPressed: () {
               setState(() {
                 _isFavorite = !_isFavorite;
+                widget.recipe.favorite = _isFavorite;
               });
             },
           ),

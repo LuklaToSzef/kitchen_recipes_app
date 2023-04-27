@@ -163,7 +163,10 @@ class _CategoriesScreenState extends State<CategoriesScreen>{
               ),
               child: InkWell(
                 onTap: () {
-                  // navigate to recipe detail screen
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RecipeDetails(recipe: recipe)),
+                  );
                 },
                 child: Stack (
                   children: [
@@ -181,11 +184,10 @@ class _CategoriesScreenState extends State<CategoriesScreen>{
                       top: 12,
                       right: 12,
                       child: IconButton(
-                      icon: Icon(Icons.star),
+                      icon: const Icon(Icons.star),
                       color: Colors.white,
                       iconSize: 35,
                       onPressed: () {
-                      // add recipe to favorites
                       },
                       ),
                     ),
