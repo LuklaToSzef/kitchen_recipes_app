@@ -119,18 +119,20 @@ class SearchPage extends StatelessWidget {
 /////////////////////////////RECIPES//////////////////////////////////
 
 class _CategoriesScreenState extends State<CategoriesScreen>{
-  bool _isFavorite = false;
   List<Recipe> filteredRecipes = [];
 
   @override
   void initState() {
     super.initState();
     // filter recipes by selected category
+
+
     filteredRecipes = recipes
         .where((recipe) => recipe.categories.contains(widget.selectedCategory))
         .toList();
 
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -163,10 +165,12 @@ class _CategoriesScreenState extends State<CategoriesScreen>{
               ),
               child: InkWell(
                 onTap: () {
+                  String categoryFrom = widget.selectedCategory;
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => RecipeDetails(recipe: recipe)),
+                    MaterialPageRoute(builder: (context) => RecipeDetails(recipe: recipe, categoryFrom: widget.selectedCategory)),
                   );
+                  Navigator.pushNamed(context, '/recipe.dart', arguments: categoryFrom);
                 },
                 child: Stack (
                   children: [
@@ -196,14 +200,13 @@ class _CategoriesScreenState extends State<CategoriesScreen>{
                       right: 10,
                       child: IconButton(
                         icon: Icon(
-                          _isFavorite ? Icons.star_border : Icons.star,
-                          color: _isFavorite ?  const Color.fromRGBO(72, 76, 180, 1.0) : const Color.fromRGBO(72, 76, 180, 1.0),
+                          recipe.favorite ? Icons.star : Icons.star_border,
+            color: recipe.favorite ?  const Color.fromRGBO(72, 76, 180, 1.0) : const Color.fromRGBO(72, 76, 180, 1.0),
                         ),
                         iconSize: 40,
                         onPressed: () {
                           setState(() {
-                            _isFavorite = !_isFavorite;
-                            recipe.favorite = _isFavorite;
+                            recipe.favorite = !recipe.favorite;
                           });
                         },
                       ),

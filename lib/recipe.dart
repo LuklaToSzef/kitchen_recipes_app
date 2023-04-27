@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:kitchen_recipes_app/recipes.dart';
 import 'data/recipe_data.dart';
 
 class RecipeDetails extends StatefulWidget {
   final Recipe recipe;
-
-  const RecipeDetails({Key? key, required this.recipe}) : super(key: key);
+  final String categoryFrom;
+  const RecipeDetails({Key? key, required this.recipe, required this.categoryFrom}) : super(key: key);
 
   @override
   _RecipeDetailsState createState() => _RecipeDetailsState();
@@ -12,7 +13,6 @@ class RecipeDetails extends StatefulWidget {
 
 class _RecipeDetailsState extends State<RecipeDetails> {
   bool _isFavorite = false;
-
 
   @override
   void initState() {
@@ -26,7 +26,17 @@ class _RecipeDetailsState extends State<RecipeDetails> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.recipe.title),
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          onPressed: () =>
+              Navigator.of(context)
+                  .push(
+                  MaterialPageRoute(builder: (_) => CategoriesScreen(selectedCategory: widget.categoryFrom))),
+          icon: const Icon(Icons.arrow_back),
+          iconSize: 35,
+        ),
         actions: [
+
           IconButton(
             icon: Icon(
               _isFavorite ? Icons.star : Icons.star_border,
