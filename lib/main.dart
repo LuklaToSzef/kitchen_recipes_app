@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kitchen_recipes_app/data/recipe_data.dart';
 import 'package:kitchen_recipes_app/saved.dart';
-import 'recipe.dart';
 import 'recipes.dart';
 void main() {
   runApp(const MyApp());
@@ -44,7 +42,7 @@ class CategoryScreen extends StatelessWidget {
       'icon': Icons.set_meal,
     },
     {
-      'name': 'Recipe',
+      'name': 'Spicy',
       'icon': Icons.local_fire_department,
     },
     {
@@ -87,11 +85,8 @@ class CategoryScreen extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => RecipeDetails(recipe: recipes.last),
-                ),
+                MaterialPageRoute(builder: (context) => CategoriesScreen(selectedCategory: category['name'] as String)),
               );
-              // navigation here
             },
             child: Container(
               decoration: BoxDecoration(
@@ -146,7 +141,7 @@ class CategoryScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CategoriesScreen(selectedCategory: 'All',)),
+                  MaterialPageRoute(builder: (context) => const CategoriesScreen(selectedCategory: 'All',)),
                 );
               },
               child: Container(
@@ -168,7 +163,7 @@ class CategoryScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SavedScreen(selectedCategory: 'All')),
+                  MaterialPageRoute(builder: (context) => const SavedScreen(selectedCategory: 'All')),
                 );
               },
               child: Container(
