@@ -42,7 +42,7 @@ class CategoryScreen extends StatelessWidget {
       'icon': Icons.set_meal,
     },
     {
-      'name': 'Recipe',
+      'name': 'Spicy',
       'icon': Icons.local_fire_department,
     },
     {
