@@ -263,5 +263,22 @@ class Recipe {
      categories: ['All', 'Healthy'],
      difficulty: 1,
    ),
-
+   Recipe(
+     title: 'Grilled Chipotle Shrimp Tacos',
+     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4MPrwbzzCGLOUbjLN_MigE9djbn_f5NbMpQ&usqp=CAU',
+     prepTime: 15,
+     cookTime: 10,
+     ingredients: ['shrimp', 'corn tortillas', 'chipotle pepper', 'lime juice', 'red cabbage', 'avocado', 'sour cream'],
+     instructions: [
+       'Preheat grill to medium-high heat.',
+       'In a mixing bowl, combine shrimp, chipotle pepper, and lime juice. Toss to coat.',
+       'Grill shrimp for 2-3 minutes per side, or until cooked through.',
+       'Warm tortillas on the grill for 10-15 seconds per side.',
+       'To assemble tacos, divide shrimp among tortillas. Top with sliced red cabbage, diced avocado, and a dollop of sour cream.',
+       'Serve immediately.',
+     ],
+     favorite: false,
+     categories: ['Seafood', 'Spicy'],
+     difficulty: 2,
+   ),
  ];
