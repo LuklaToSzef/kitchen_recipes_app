@@ -27,7 +27,6 @@ class Constants{
 }
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({Key? key}) : super(key: key);
-
   static const categories = [
     {
       'name': 'Fast Food',
@@ -78,7 +77,7 @@ class CategoryScreen extends StatelessWidget {
           crossAxisSpacing: 30,
           mainAxisSpacing: 30,
         ),
-        itemCount: categories.length,
+    itemCount: categories.length,
         itemBuilder: (BuildContext context, int index) {
           final category = categories[index];
           return GestureDetector(
@@ -123,7 +122,7 @@ class CategoryScreen extends StatelessWidget {
           children: [
             GestureDetector(
               child: Container(
-                width: 140,
+                width: 150,
                 height: 55,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
