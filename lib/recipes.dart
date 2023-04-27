@@ -21,6 +21,7 @@ class SearchPage extends StatelessWidget {
   void clearText() {
     fieldText.clear();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,16 +125,12 @@ class _CategoriesScreenState extends State<CategoriesScreen>{
   @override
   void initState() {
     super.initState();
-    // filter recipes by selected category
-
 
     filteredRecipes = recipes
         .where((recipe) => recipe.categories.contains(widget.selectedCategory))
         .toList();
 
   }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
