@@ -275,7 +275,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>{
         child: Column(
           children: filteredRecipes.map((recipe) {
             return Container(
-              margin: const EdgeInsets.only(bottom: 15.0),
+              margin: const EdgeInsets.only(bottom: 30.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50.0),
                 border: Border.all(
