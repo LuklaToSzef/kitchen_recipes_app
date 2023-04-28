@@ -116,71 +116,76 @@ class CategoryScreen extends StatelessWidget {
         },
       ),
       bottomNavigationBar: BottomAppBar(
+        color: Colors.blue,
         shape: const CircularNotchedRectangle(),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            GestureDetector(
-              child: Container(
-                width: 140,
-                height: 55,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: const Color.fromRGBO(0, 184, 255, 1.0),
-                ),
-                child: const Center(
-                  child: Text(
-                    'Categories',
-                    style: TextStyle(fontSize: 23, color: Colors.white),
-                  ),
-                ),
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const CategoriesScreen(selectedCategory: 'All',)),
-                );
-              },
-              child: Container(
-                width: 120,
-                height: 55,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: Colors.white,
-                ),
-                child: const Center(
-                  child: Text(
-                    'Recipes',
-                    style: TextStyle(fontSize: 23, color: Colors.black),
-                  ),
+        clipBehavior: Clip.antiAlias,
+        elevation: 4,
+        notchMargin: 8,
+        child: SizedBox(
+          height: 55,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    GestureDetector(
+                      child: Icon(Icons.category, color: Constants().kSecondaryBlue, size: 35),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      'Categories',
+                      style: TextStyle(color: Constants().kSecondaryBlue, fontWeight: FontWeight.bold, fontSize: 12),
+                    ),
+                  ],
                 ),
               ),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const SavedScreen(selectedCategory: 'All')),
-                );
-              },
-              child: Container(
-                width: 120,
-                height: 55,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: Colors.white,
-                ),
-                child: const Center(
-                  child: Text(
-                    'Saved',
-                    style: TextStyle(fontSize: 23, color: Colors.black),
-                  ),
+              Expanded(
+                flex: 2,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const CategoriesScreen(selectedCategory: 'All')),
+                        );
+                      },
+                      child: const Icon(Icons.restaurant_menu, color: Colors.white70, size: 35),
+                    ),
+                    const SizedBox(height: 4),
+                    const Text(
+                      'Recipes',
+                      style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold, fontSize: 12),
+                    ),
+                  ],
                 ),
               ),
-            ),
-          ],
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const SavedScreen(selectedCategory: 'All')),
+                        );
+                      },
+                      child: const Icon(Icons.star, color: Colors.white70, size: 35),
+                    ),
+                    const SizedBox(height: 4),
+                    const Text(
+                      'Saved',
+                      style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold, fontSize: 12),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
