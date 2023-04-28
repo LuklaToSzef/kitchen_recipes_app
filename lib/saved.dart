@@ -291,7 +291,17 @@ class _SavedScreenState extends State<SavedScreen>{
                     MaterialPageRoute(builder: (_) => SearchPage(selectedCategory: widget.selectedCategory))),
             icon: const Icon(Icons.search),
             iconSize: 40,
-          )
+          ),
+          actions: [
+          IconButton(
+              onPressed: () =>
+                  Navigator.of(context)
+                  .push(
+                      MaterialPageRoute(builder: (_) => SavedScreen(selectedCategory: widget.selectedCategory))),
+            icon: const Icon(Icons.refresh),
+            iconSize: 40,
+    ),
+    ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(30.0),
