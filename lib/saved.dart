@@ -7,9 +7,10 @@ import 'main.dart';
 class SavedScreen extends StatefulWidget {
   final String selectedCategory;
 
-  const SavedScreen({required this.selectedCategory});
+  const SavedScreen({super.key, required this.selectedCategory});
 
   @override
+  // ignore: library_private_types_in_public_api
   _SavedScreenState createState() => _SavedScreenState();
 }
 
@@ -17,9 +18,10 @@ class SavedScreen extends StatefulWidget {
 class SearchPage extends StatefulWidget {
   final String selectedCategory;
 
-  const SearchPage({required this.selectedCategory});
+  const SearchPage({super.key, required this.selectedCategory});
 
   @override
+  // ignore: library_private_types_in_public_api
   _SearchPageState createState() => _SearchPageState();
 }
 
