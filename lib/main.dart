@@ -171,8 +171,7 @@ class CategoryScreen extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const SavedScreen(selectedCategory: 'All')),
-                        );
+                          MaterialPageRoute(builder: (context) => const SavedScreen(selectedCategory: 'Saved')),                        );
                       },
                       child: const Icon(Icons.star, color: Colors.white70, size: 35),
                     ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kitchen_recipes_app/recipes.dart';
+import 'package:kitchen_recipes_app/saved.dart';
 import 'data/recipe_data.dart';
 
 class RecipeDetails extends StatefulWidget {
@@ -19,7 +20,19 @@ class _RecipeDetailsState extends State<RecipeDetails> {
     super.initState();
     _isFavorite = widget.recipe.favorite;
   }
-
+  void transport() {
+    if (widget.categoryFrom == 'Saved') {
+      Navigator.of(context)
+          .push(
+          MaterialPageRoute(builder: (_) =>
+              SavedScreen(selectedCategory: widget.categoryFrom)));
+    } else {
+      Navigator.of(context)
+          .push(
+          MaterialPageRoute(builder: (_) =>
+              CategoriesScreen(selectedCategory: widget.categoryFrom)));
+    }
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +41,8 @@ class _RecipeDetailsState extends State<RecipeDetails> {
         title: Text(widget.recipe.title),
         automaticallyImplyLeading: false,
         leading: IconButton(
-          onPressed: () =>
-              Navigator.of(context)
-                  .push(
-                  MaterialPageRoute(builder: (_) => CategoriesScreen(selectedCategory: widget.categoryFrom))),
-          icon: const Icon(Icons.arrow_back),
+          onPressed: () => transport(),
+            icon: const Icon(Icons.arrow_back),
           iconSize: 35,
         ),
         actions: [

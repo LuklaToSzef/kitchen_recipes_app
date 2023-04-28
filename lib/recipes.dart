@@ -46,8 +46,28 @@ class _SearchPageState extends  State<SearchPage>{
           .toList();
     });
   }
-  void clearText() {
+  void clearText(String query) {
     fieldText.clear();
+    query = '';
+    setState(() {
+      filteredRecipesByTitle = filteredRecipes
+          .where((recipe) =>
+          recipe.title.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    });
+  }
+  void transport() {
+    if (widget.selectedCategory == 'Saved') {
+      Navigator.of(context)
+          .push(
+          MaterialPageRoute(builder: (_) =>
+              SavedScreen(selectedCategory: widget.selectedCategory)));
+    } else {
+      Navigator.of(context)
+          .push(
+          MaterialPageRoute(builder: (_) =>
+              CategoriesScreen(selectedCategory: widget.selectedCategory)));
+    }
   }
   @override
   Widget build(BuildContext context) {
@@ -55,10 +75,7 @@ class _SearchPageState extends  State<SearchPage>{
       appBar: AppBar(
           automaticallyImplyLeading: false,
           leading: IconButton(
-            onPressed: () =>
-                Navigator.of(context)
-                    .push(
-                    MaterialPageRoute(builder: (_) =>  CategoriesScreen(selectedCategory: widget.selectedCategory))),
+            onPressed: () => transport(),
             icon: const Icon(Icons.arrow_back),
             iconSize: 35,
           ),
@@ -81,7 +98,7 @@ class _SearchPageState extends  State<SearchPage>{
                   suffixIcon: IconButton(
                     icon: const Icon(Icons.clear),
                     onPressed: (){
-                      clearText();
+                      clearText(searchText);
                     },
                   ),
                   hintText: 'Search...',
@@ -94,7 +111,7 @@ class _SearchPageState extends  State<SearchPage>{
         child: Column(
           children: filteredRecipesByTitle.map((recipe) {
             return Container(
-              margin: const EdgeInsets.only(bottom: 15.0),
+              margin: const EdgeInsets.only(bottom: 30.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50.0),
                 border: Border.all(
@@ -171,60 +188,76 @@ class _SearchPageState extends  State<SearchPage>{
         ),
       ),
       bottomNavigationBar: BottomAppBar(
+        color: Colors.blue,
         shape: const CircularNotchedRectangle(),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const CategoryScreen()),
-                );
-              },
-              child: Container(
-                width: 120,
-                height: 55,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: Colors.white,
-                ),
-                child: const Center(
-                  child: Text(
-                    'Categories',
-                    style: TextStyle(fontSize: 23, color: Colors.black),
-                  ),
-                ),
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-              },
-              child: Container(
-                width: 140,
-                height: 55,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: const Color.fromRGBO(0, 184, 255, 1.0),
-                ),
-                child: const Center(
-                  child: Text(
-                    'Recipes',
-                    style: TextStyle(fontSize: 23, color: Colors.white),
-                  ),
+        clipBehavior: Clip.antiAlias,
+        elevation: 4,
+        notchMargin: 8,
+        child: SizedBox(
+          height: 55,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const CategoryScreen()),
+                        );
+                      },
+                      child: const Icon(Icons.category, color: Colors.white70, size: 35),
+                    ),
+                    const SizedBox(height: 4),
+                    const Text(
+                      'Categories',
+                      style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold, fontSize: 12),
+                    ),
+                  ],
                 ),
               ),
-            ),
-            Container(
-                width: 120,
-                height: 55,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: Colors.white,
+              Expanded(
+                flex: 2,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    GestureDetector(
+                      child: Icon(Icons.restaurant_menu, size: 35, color: Constants().kSecondaryBlue),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      'Recipes',
+                      style: TextStyle(color: Constants().kSecondaryBlue, fontWeight: FontWeight.bold, fontSize: 12),
+                    ),
+                  ],
                 ),
-                child: const Center(child: Text('Saved',
-                  style: TextStyle(fontSize: 23, color: Colors.black),))),
-          ],
+              ),
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const SavedScreen(selectedCategory: 'Saved')),
+                        );
+                      },
+                      child: const Icon(Icons.star, color: Colors.white70, size: 35),
+                    ),
+                    const SizedBox(height: 4),
+                    const Text(
+                      'Saved',
+                      style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold, fontSize: 12),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -285,12 +318,10 @@ class _CategoriesScreenState extends State<CategoriesScreen>{
               ),
               child: InkWell(
                 onTap: () {
-                  String categoryFrom = widget.selectedCategory;
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => RecipeDetails(recipe: recipe, categoryFrom: widget.selectedCategory)),
                   );
-                  Navigator.pushNamed(context, '/recipe.dart', arguments: categoryFrom);
                 },
                 child: Stack (
                   children: [
@@ -354,66 +385,76 @@ class _CategoriesScreenState extends State<CategoriesScreen>{
         ),
       ),
       bottomNavigationBar: BottomAppBar(
+        color: Colors.blue,
         shape: const CircularNotchedRectangle(),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const CategoryScreen()),
-                );
-              },
-              child: Container(
-                width: 120,
-                height: 55,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: Colors.white,
-                ),
-                child: const Center(
-                  child: Text(
-                    'Categories',
-                    style: TextStyle(fontSize: 23, color: Colors.black),
-                  ),
-                ),
-              ),
-            ),
-            GestureDetector(
-              child: Container(
-                width: 140,
-                height: 55,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: const Color.fromRGBO(0, 184, 255, 1.0),
-                ),
-                child: const Center(
-                  child: Text(
-                    'Recipes',
-                    style: TextStyle(fontSize: 23, color: Colors.white),
-                  ),
+        clipBehavior: Clip.antiAlias,
+        elevation: 4,
+        notchMargin: 8,
+        child: SizedBox(
+          height: 55,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const CategoryScreen()),
+                        );
+                      },
+                      child: const Icon(Icons.category, color: Colors.white70, size: 35),
+                    ),
+                    const SizedBox(height: 4),
+                    const Text(
+                      'Categories',
+                      style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold, fontSize: 12),
+                    ),
+                  ],
                 ),
               ),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const SavedScreen(selectedCategory: 'All')),
-                );
-              },
-              child: Container(
-                  width: 120,
-                  height: 55,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: Colors.white,
-                  ),
-                  child: const Center(child: Text('Saved',
-                    style: TextStyle(fontSize: 23, color: Colors.black),))),
-            ),
-          ],
+              Expanded(
+                flex: 2,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    GestureDetector(
+                      child: Icon(Icons.restaurant_menu, size: 35, color: Constants().kSecondaryBlue),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      'Recipes',
+                      style: TextStyle(color: Constants().kSecondaryBlue, fontWeight: FontWeight.bold, fontSize: 12),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const SavedScreen(selectedCategory: 'Saved')),
+                        );
+                      },
+                      child: const Icon(Icons.star, color: Colors.white70, size: 35),
+                    ),
+                    const SizedBox(height: 4),
+                    const Text(
+                      'Saved',
+                      style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold, fontSize: 12),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
