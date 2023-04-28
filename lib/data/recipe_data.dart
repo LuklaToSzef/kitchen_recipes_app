@@ -260,7 +260,7 @@ class Recipe {
        'Serve hot, garnished with fresh herbs if desired.',
      ],
      favorite: false,
-     categories: ['All', 'Healthy'],
+     categories: ['All', 'Healthy', 'Dinner'],
      difficulty: 1,
    ),
    Recipe(
