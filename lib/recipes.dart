@@ -422,6 +422,12 @@ class _CategoriesScreenState extends State<CategoriesScreen>{
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const CategoriesScreen(selectedCategory: 'All')),
+                        );
+                      },
                       child: Icon(Icons.restaurant_menu, size: 35, color: Constants().kSecondaryBlue),
                     ),
                     const SizedBox(height: 4),
