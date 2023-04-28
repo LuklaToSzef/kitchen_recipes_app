@@ -55,6 +55,7 @@ class SearchPage extends StatelessWidget {
               ),
             ),
           )),
+
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         child: Row(
@@ -149,7 +150,7 @@ class _SavedScreenState extends State<SavedScreen>{
           )
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(30.0),
         child: Column(
           children: filteredRecipes.map((recipe) {
             return Container(
@@ -163,7 +164,12 @@ class _SavedScreenState extends State<SavedScreen>{
               ),
               child: InkWell(
                 onTap: () {
-                  // navigate to recipe detail screen
+                  String categoryFrom = widget.selectedCategory;
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RecipeDetails(recipe: recipe, categoryFrom: widget.selectedCategory)),
+                  );
+                  Navigator.pushNamed(context, '/recipe.dart', arguments: categoryFrom);
                 },
                 child: Stack (
                   children: [
@@ -175,17 +181,16 @@ class _SavedScreenState extends State<SavedScreen>{
                           fit: BoxFit.cover,
                         ),
                       ),
-                      height: 280,
+                      height: 240,
                     ),
                     Positioned(
                       top: 12,
                       right: 12,
                       child: IconButton(
-                        icon: Icon(Icons.star),
+                        icon: const Icon(Icons.star),
                         color: Colors.white,
                         iconSize: 35,
                         onPressed: () {
-                          // add recipe to favorites
                         },
                       ),
                     ),
@@ -194,14 +199,13 @@ class _SavedScreenState extends State<SavedScreen>{
                       right: 10,
                       child: IconButton(
                         icon: Icon(
-                          _isFavorite ? Icons.star_border : Icons.star,
-                          color: _isFavorite ?  const Color.fromRGBO(72, 76, 180, 1.0) : const Color.fromRGBO(72, 76, 180, 1.0),
+                          recipe.favorite ? Icons.star : Icons.star_border,
+                          color: recipe.favorite ?  const Color.fromRGBO(72, 76, 180, 1.0) : const Color.fromRGBO(72, 76, 180, 1.0),
                         ),
                         iconSize: 40,
                         onPressed: () {
                           setState(() {
-                            _isFavorite = !_isFavorite;
-                            recipe.favorite = _isFavorite;
+                            recipe.favorite = !recipe.favorite;
                           });
                         },
                       ),
@@ -211,7 +215,7 @@ class _SavedScreenState extends State<SavedScreen>{
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const SizedBox(height: 280),
+                          const SizedBox(height: 240),
                           Text(
                             recipe.title,
                             style: const TextStyle(fontSize: 20.0),
