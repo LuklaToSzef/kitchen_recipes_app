@@ -122,7 +122,7 @@ class CategoryScreen extends StatelessWidget {
           children: [
             GestureDetector(
               child: Container(
-                width: 150,
+                width: 140,
                 height: 55,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
