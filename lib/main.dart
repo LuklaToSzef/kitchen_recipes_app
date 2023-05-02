@@ -136,7 +136,7 @@ class CategoryScreen extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       'Categories',
-                      style: TextStyle(color: Constants().kSecondaryBlue, fontWeight: FontWeight.bold, fontSize: 12),
+                      style: TextStyle(color: Constants().kSecondaryBlue, fontWeight: FontWeight.bold, fontSize: 13),
                     ),
                   ],
                 ),
@@ -158,7 +158,7 @@ class CategoryScreen extends StatelessWidget {
                     const SizedBox(height: 4),
                     const Text(
                       'Recipes',
-                      style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold, fontSize: 12),
+                      style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold, fontSize: 13),
                     ),
                   ],
                 ),
@@ -173,12 +173,12 @@ class CategoryScreen extends StatelessWidget {
                           context,
                           MaterialPageRoute(builder: (context) => const SavedScreen(selectedCategory: 'Saved')),                        );
                       },
-                      child: const Icon(Icons.star, color: Colors.white70, size: 35),
+                      child: const Icon(Icons.star, color: Colors.white60, size: 35),
                     ),
                     const SizedBox(height: 4),
                     const Text(
                       'Saved',
-                      style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold, fontSize: 12),
+                      style: TextStyle(color: Colors.white60, fontWeight: FontWeight.bold, fontSize: 13),
                     ),
                   ],
                 ),
