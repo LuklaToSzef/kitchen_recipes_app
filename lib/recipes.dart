@@ -173,7 +173,7 @@ class _SearchPageState extends  State<SearchPage>{
                           const SizedBox(height: 240),
                           Text(
                             recipe.title,
-                            style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                            style: const TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 8.0),
                           Text('${recipe.prepTime + recipe.cookTime} minutes', style: const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
