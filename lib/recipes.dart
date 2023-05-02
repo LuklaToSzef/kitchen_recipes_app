@@ -33,7 +33,6 @@ class _SearchPageState extends  State<SearchPage>{
 
   void initState() {
     super.initState();
-    // filter recipes by selected category
     filteredRecipes = recipes
         .where((recipe) => recipe.categories.contains(widget.selectedCategory))
         .toList();
@@ -41,7 +40,6 @@ class _SearchPageState extends  State<SearchPage>{
   }
   void search(String query) {
     setState(() {
-      // filter recipes by title that matches the search query
       filteredRecipesByTitle = filteredRecipes
           .where((recipe) =>
           recipe.title.toLowerCase().contains(query.toLowerCase()))
