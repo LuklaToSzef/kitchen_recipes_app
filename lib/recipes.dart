@@ -7,17 +7,19 @@ import 'main.dart';
 class CategoriesScreen extends StatefulWidget {
   final String selectedCategory;
 
-  const CategoriesScreen({required this.selectedCategory});
+  const CategoriesScreen({super.key, required this.selectedCategory});
 
   @override
+  // ignore: library_private_types_in_public_api
   _CategoriesScreenState createState() => _CategoriesScreenState();
 }
 class SearchPage extends StatefulWidget {
   final String selectedCategory;
 
-  const SearchPage({required this.selectedCategory});
+  const SearchPage({super.key, required this.selectedCategory});
 
   @override
+  // ignore: library_private_types_in_public_api
   _SearchPageState createState() => _SearchPageState();
 }
 /////////////////////////////SEARCH//////////////////////////////////
@@ -31,7 +33,6 @@ class _SearchPageState extends  State<SearchPage>{
 
   void initState() {
     super.initState();
-    // filter recipes by selected category
     filteredRecipes = recipes
         .where((recipe) => recipe.categories.contains(widget.selectedCategory))
         .toList();
@@ -39,7 +40,6 @@ class _SearchPageState extends  State<SearchPage>{
   }
   void search(String query) {
     setState(() {
-      // filter recipes by title that matches the search query
       filteredRecipesByTitle = filteredRecipes
           .where((recipe) =>
           recipe.title.toLowerCase().contains(query.toLowerCase()))
@@ -176,7 +176,7 @@ class _SearchPageState extends  State<SearchPage>{
                             style: const TextStyle(fontSize: 20.0),
                           ),
                           const SizedBox(height: 8.0),
-                          Text('${recipe.prepTime + recipe.cookTime} minutes', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
+                          Text('${recipe.prepTime + recipe.cookTime} minutes', style: const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
                         ],
                       ),
                     ),
@@ -373,7 +373,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>{
                             style: const TextStyle(fontSize: 20.0),
                           ),
                           const SizedBox(height: 8.0),
-                          Text('${recipe.prepTime + recipe.cookTime} minutes', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
+                          Text('${recipe.prepTime + recipe.cookTime} minutes', style: const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
                         ],
                       ),
                     ),

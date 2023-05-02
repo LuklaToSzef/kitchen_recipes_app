@@ -9,6 +9,7 @@ class RecipeDetails extends StatefulWidget {
   const RecipeDetails({Key? key, required this.recipe, required this.categoryFrom}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _RecipeDetailsState createState() => _RecipeDetailsState();
 }
 
