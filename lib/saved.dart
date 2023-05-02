@@ -168,14 +168,14 @@ class _SearchPageState extends  State<SearchPage>{
                       ),
                     ),
                     Container(
-                      padding: const EdgeInsets.all(15.0),
+                      padding: const EdgeInsets.all(20.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const SizedBox(height: 240),
                           Text(
                             recipe.title,
-                            style: const TextStyle(fontSize: 20.0),
+                            style: const TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 8.0),
                           Text('${recipe.prepTime + recipe.cookTime} minutes', style: const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
@@ -366,17 +366,18 @@ class _SavedScreenState extends State<SavedScreen>{
                       ),
                     ),
                     Container(
-                      padding: const EdgeInsets.all(15.0),
+                      padding: const EdgeInsets.all(20.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const SizedBox(height: 240),
                           Text(
                             recipe.title,
-                            style: const TextStyle(fontSize: 20.0),
+                            style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 8.0),
-                          Text('${recipe.prepTime + recipe.cookTime} minutes', style: const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
+                          Text('${recipe.prepTime + recipe.cookTime} minutes', style: const TextStyle(color: Colors.grey,
+                              fontWeight: FontWeight.bold)),
                         ],
                       ),
                     ),
