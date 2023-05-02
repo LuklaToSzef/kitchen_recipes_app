@@ -15,6 +15,7 @@ class SavedScreen extends StatefulWidget {
 }
 
 /////////////////////////////SEARCH//////////////////////////////////
+
 class SearchPage extends StatefulWidget {
   final String selectedCategory;
 
