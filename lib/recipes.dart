@@ -33,7 +33,6 @@ class _SearchPageState extends  State<SearchPage>{
 
   void initState() {
     super.initState();
-    // filter recipes by selected category
     filteredRecipes = recipes
         .where((recipe) => recipe.categories.contains(widget.selectedCategory))
         .toList();
@@ -41,7 +40,6 @@ class _SearchPageState extends  State<SearchPage>{
   }
   void search(String query) {
     setState(() {
-      // filter recipes by title that matches the search query
       filteredRecipesByTitle = filteredRecipes
           .where((recipe) =>
           recipe.title.toLowerCase().contains(query.toLowerCase()))
@@ -168,14 +166,14 @@ class _SearchPageState extends  State<SearchPage>{
                       ),
                     ),
                     Container(
-                      padding: const EdgeInsets.all(15.0),
+                      padding: const EdgeInsets.all(20.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const SizedBox(height: 240),
+                          const SizedBox(height: 235),
                           Text(
                             recipe.title,
-                            style: const TextStyle(fontSize: 20.0),
+                            style: const TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 8.0),
                           Text('${recipe.prepTime + recipe.cookTime} minutes', style: const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
@@ -365,14 +363,14 @@ class _CategoriesScreenState extends State<CategoriesScreen>{
                       ),
                     ),
                     Container(
-                      padding: const EdgeInsets.all(15.0),
+                      padding: const EdgeInsets.all(20.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const SizedBox(height: 240),
+                          const SizedBox(height: 235),
                           Text(
                             recipe.title,
-                            style: const TextStyle(fontSize: 20.0),
+                            style: const TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 8.0),
                           Text('${recipe.prepTime + recipe.cookTime} minutes', style: const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),

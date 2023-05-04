@@ -66,7 +66,9 @@ class CategoryScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Food Recipes'),
+        title: const Text(
+          'Food Recipes',
+          style: TextStyle(fontSize: 24.0, fontFamily: 'Helvetica',),),
         automaticallyImplyLeading: false,
       ),
       body: GridView.builder(
@@ -89,7 +91,7 @@ class CategoryScreen extends StatelessWidget {
             },
             child: Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(30),
                 color: Constants().kPrimaryBlue,
               ),
               child: Column(
@@ -136,7 +138,7 @@ class CategoryScreen extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       'Categories',
-                      style: TextStyle(color: Constants().kSecondaryBlue, fontWeight: FontWeight.bold, fontSize: 12),
+                      style: TextStyle(color: Constants().kSecondaryBlue, fontWeight: FontWeight.bold, fontSize: 13),
                     ),
                   ],
                 ),
@@ -158,7 +160,7 @@ class CategoryScreen extends StatelessWidget {
                     const SizedBox(height: 4),
                     const Text(
                       'Recipes',
-                      style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold, fontSize: 12),
+                      style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold, fontSize: 13),
                     ),
                   ],
                 ),
@@ -173,12 +175,12 @@ class CategoryScreen extends StatelessWidget {
                           context,
                           MaterialPageRoute(builder: (context) => const SavedScreen(selectedCategory: 'Saved')),                        );
                       },
-                      child: const Icon(Icons.star, color: Colors.white70, size: 35),
+                      child: const Icon(Icons.star, color: Colors.white60, size: 35),
                     ),
                     const SizedBox(height: 4),
                     const Text(
                       'Saved',
-                      style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold, fontSize: 12),
+                      style: TextStyle(color: Colors.white60, fontWeight: FontWeight.bold, fontSize: 13),
                     ),
                   ],
                 ),
