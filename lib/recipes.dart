@@ -170,10 +170,10 @@ class _SearchPageState extends  State<SearchPage>{
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const SizedBox(height: 240),
+                          const SizedBox(height: 235),
                           Text(
                             recipe.title,
-                            style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                            style: const TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 8.0),
                           Text('${recipe.prepTime + recipe.cookTime} minutes', style: const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
@@ -367,7 +367,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>{
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const SizedBox(height: 240),
+                          const SizedBox(height: 235),
                           Text(
                             recipe.title,
                             style: const TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
