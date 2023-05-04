@@ -89,7 +89,7 @@ class CategoryScreen extends StatelessWidget {
             },
             child: Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(30),
                 color: Constants().kPrimaryBlue,
               ),
               child: Column(
