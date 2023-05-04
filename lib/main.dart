@@ -66,7 +66,9 @@ class CategoryScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Food Recipes'),
+        title: const Text(
+          'Food Recipes',
+          style: TextStyle(fontSize: 24.0, fontFamily: 'Helvetica',),),
         automaticallyImplyLeading: false,
       ),
       body: GridView.builder(
