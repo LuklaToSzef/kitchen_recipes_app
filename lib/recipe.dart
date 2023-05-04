@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:kitchen_recipes_app/recipes.dart';
 import 'package:kitchen_recipes_app/saved.dart';
 import 'data/recipe_data.dart';
+// ignore: unused_import
+import 'main.dart';
 
 class RecipeDetails extends StatefulWidget {
   final Recipe recipe;
